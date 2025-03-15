@@ -7,9 +7,17 @@ package org.sdkfabric.openai;
 
 import com.fasterxml.jackson.annotation.*;
 
-public class CompletionMessage {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "role")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = CompletionMessageDeveloper.class, name = "developer"),
+    @JsonSubTypes.Type(value = CompletionMessageSystem.class, name = "system"),
+    @JsonSubTypes.Type(value = CompletionMessageUser.class, name = "user"),
+    @JsonSubTypes.Type(value = CompletionMessageAssistant.class, name = "assistant"),
+    @JsonSubTypes.Type(value = CompletionMessageTool.class, name = "tool"),
+})
+public abstract class CompletionMessage {
     private String role;
-    private String content;
+    private java.util.List<String> content;
 
     @JsonSetter("role")
     public void setRole(String role) {
@@ -22,12 +30,12 @@ public class CompletionMessage {
     }
 
     @JsonSetter("content")
-    public void setContent(String content) {
+    public void setContent(java.util.List<String> content) {
         this.content = content;
     }
 
     @JsonGetter("content")
-    public String getContent() {
+    public java.util.List<String> getContent() {
         return this.content;
     }
 }

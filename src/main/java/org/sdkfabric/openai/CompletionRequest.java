@@ -8,22 +8,39 @@ package org.sdkfabric.openai;
 import com.fasterxml.jackson.annotation.*;
 
 public class CompletionRequest {
+    @JsonPropertyDescription("Model ID used to generate the response, like gpt-4o or o1. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the model guide to browse and compare available models.")
     private String model;
+    @JsonPropertyDescription("A list of messages comprising the conversation so far. Depending on the model you use, different message types (modalities) are supported, like text, images, and audio.")
     private java.util.List<CompletionMessage> messages;
+    @JsonPropertyDescription("Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.")
     private Double frequencyPenalty;
+    @JsonPropertyDescription("Modify the likelihood of specified tokens appearing in the completion.")
     private java.util.Map<String, Integer> logitBias;
+    @JsonPropertyDescription("Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message.")
     private Boolean logprobs;
+    @JsonPropertyDescription("An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and reasoning tokens.")
     private Integer maxCompletionTokens;
+    @JsonPropertyDescription("Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format, and querying for objects via API or the dashboard.")
     private java.util.Map<String, String> metadata;
+    @JsonPropertyDescription("Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.")
     private Double presencePenalty;
+    @JsonPropertyDescription("Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.")
     private String reasoningEffort;
+    @JsonPropertyDescription("This feature is in Beta. If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same seed and parameters should return the same result. Determinism is not guaranteed, and you should refer to the system_fingerprint response parameter to monitor changes in the backend.")
     private Integer seed;
+    @JsonPropertyDescription("Specifies the latency tier to use for processing the request. This parameter is relevant for customers subscribed to the scale tier service")
     private String serviceTier;
+    @JsonPropertyDescription("Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.")
     private java.util.List<String> stop;
+    @JsonPropertyDescription("Whether or not to store the output of this chat completion request for use in our model distillation or evals products.")
     private Boolean store;
+    @JsonPropertyDescription("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.")
     private Double temperature;
+    @JsonPropertyDescription("An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. logprobs must be set to true if this parameter is used.")
     private Integer topLogprobs;
+    @JsonPropertyDescription("An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.")
     private Double topP;
+    @JsonPropertyDescription("A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.")
     private String user;
 
     @JsonSetter("model")
