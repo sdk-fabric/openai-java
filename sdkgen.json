@@ -1,0 +1,9 @@
+{
+  "type": "client-java",
+  "require": {
+    "sdkfabric/openai": {
+      "target": "./src/main/java/org/sdkfabric/openai",
+      "namespace": "org.sdkfabric.openai"
+    }
+  }
+}
