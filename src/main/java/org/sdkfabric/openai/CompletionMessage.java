@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.*;
 })
 public abstract class CompletionMessage {
     private String role;
-    private java.util.List<String> content;
+    private String content;
 
     @JsonSetter("role")
     public void setRole(String role) {
@@ -30,12 +30,12 @@ public abstract class CompletionMessage {
     }
 
     @JsonSetter("content")
-    public void setContent(java.util.List<String> content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
     @JsonGetter("content")
-    public java.util.List<String> getContent() {
+    public String getContent() {
         return this.content;
     }
 }
