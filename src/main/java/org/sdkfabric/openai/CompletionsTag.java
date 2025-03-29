@@ -60,6 +60,12 @@ public class CompletionsTag extends TagAbstract {
                 }
 
                 var statusCode = response.getCode();
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
+
+                    throw new ErrorException(data);
+                }
+
                 throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
             });
         } catch (ClientException e) {
@@ -98,6 +104,12 @@ public class CompletionsTag extends TagAbstract {
                 }
 
                 var statusCode = response.getCode();
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
+
+                    throw new ErrorException(data);
+                }
+
                 throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
             });
         } catch (ClientException e) {
@@ -133,6 +145,12 @@ public class CompletionsTag extends TagAbstract {
                 }
 
                 var statusCode = response.getCode();
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
+
+                    throw new ErrorException(data);
+                }
+
                 throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
             });
         } catch (ClientException e) {
