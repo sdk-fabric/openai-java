@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.*;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = ResponseResponseOutputFunctionCall.class, name = "function_call"),
     @JsonSubTypes.Type(value = ResponseResponseOutputMessage.class, name = "message"),
 })
 public abstract class ResponseResponseOutput {

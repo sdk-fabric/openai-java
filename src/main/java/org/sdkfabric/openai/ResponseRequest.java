@@ -11,11 +11,11 @@ public class ResponseRequest {
     @JsonPropertyDescription("Whether to run the model response in the background.")
     private Boolean background;
     @JsonPropertyDescription("The conversation that this response belongs to. Items from this conversation are prepended to input_items for this response request. Input items and output items from this response are automatically added to this conversation after this response completes.")
-    private ResponseRequestConversation conversation;
+    private String conversation;
     @JsonPropertyDescription("Specify additional output data to include in the model response.")
     private java.util.List<String> include;
     @JsonPropertyDescription("Text, image, or file inputs to the model, used to generate a response.")
-    private String input;
+    private java.util.List<ResponseRequestInput> input;
     @JsonPropertyDescription("A system (or developer) message inserted into the model's context.  When using along with previous_response_id, the instructions from a previous response will not be carried over to the next response. This makes it simple to swap out system (or developer) messages in new responses.")
     private String instructions;
     @JsonPropertyDescription("An upper bound for the number of tokens that can be generated for a response, including visible output tokens and reasoning tokens.")
@@ -45,11 +45,11 @@ public class ResponseRequest {
     @JsonPropertyDescription("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.")
     private Double temperature;
     @JsonPropertyDescription("Configuration options for a text response from the model. Can be plain text or structured JSON data.")
-    private ResponseText text;
+    private ResponseRequestText text;
     @JsonPropertyDescription("How the model should select which tool (or tools) to use when generating a response. See the tools parameter to see how to specify which tools the model can call.")
     private String toolChoice;
     @JsonPropertyDescription("An array of tools the model may call while generating a response. You can specify which tool to use by setting the tool_choice parameter.")
-    private java.util.List<ResponseTool> tools;
+    private java.util.List<ResponseRequestTool> tools;
     @JsonPropertyDescription("An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability.")
     private Integer topLogprobs;
     @JsonPropertyDescription("An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.  We generally recommend altering this or temperature but not both.")
@@ -68,12 +68,12 @@ public class ResponseRequest {
     }
 
     @JsonSetter("conversation")
-    public void setConversation(ResponseRequestConversation conversation) {
+    public void setConversation(String conversation) {
         this.conversation = conversation;
     }
 
     @JsonGetter("conversation")
-    public ResponseRequestConversation getConversation() {
+    public String getConversation() {
         return this.conversation;
     }
 
@@ -88,12 +88,12 @@ public class ResponseRequest {
     }
 
     @JsonSetter("input")
-    public void setInput(String input) {
+    public void setInput(java.util.List<ResponseRequestInput> input) {
         this.input = input;
     }
 
     @JsonGetter("input")
-    public String getInput() {
+    public java.util.List<ResponseRequestInput> getInput() {
         return this.input;
     }
 
@@ -238,12 +238,12 @@ public class ResponseRequest {
     }
 
     @JsonSetter("text")
-    public void setText(ResponseText text) {
+    public void setText(ResponseRequestText text) {
         this.text = text;
     }
 
     @JsonGetter("text")
-    public ResponseText getText() {
+    public ResponseRequestText getText() {
         return this.text;
     }
 
@@ -258,12 +258,12 @@ public class ResponseRequest {
     }
 
     @JsonSetter("tools")
-    public void setTools(java.util.List<ResponseTool> tools) {
+    public void setTools(java.util.List<ResponseRequestTool> tools) {
         this.tools = tools;
     }
 
     @JsonGetter("tools")
-    public java.util.List<ResponseTool> getTools() {
+    public java.util.List<ResponseRequestTool> getTools() {
         return this.tools;
     }
 
