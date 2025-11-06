@@ -18,7 +18,7 @@ public class ResponseResponseOutputMessage extends ResponseResponseOutput {
     @JsonPropertyDescription("The status of the message input. One of in_progress, completed, or incomplete. Populated when input items are returned via API.")
     private String status;
     @JsonPropertyDescription("The type of the output message. Always message.")
-    private String type;
+    private String type = "message";
 
     @JsonSetter("content")
     public void setContent(java.util.List<String> content) {
