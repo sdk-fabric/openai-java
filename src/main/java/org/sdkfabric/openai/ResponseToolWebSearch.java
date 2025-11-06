@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.*;
 
 public class ResponseToolWebSearch extends ResponseTool {
     @JsonPropertyDescription("The type of the web search tool. One of web_search or web_search_2025_08_26.")
-    private String type;
+    private String type = "web_search";
     @JsonPropertyDescription("Filters for the search.")
     private ResponseToolWebSearchFilter filters;
     @JsonPropertyDescription("High level guidance for the amount of context window space to use for the search. One of low, medium, or high. medium is the default.")

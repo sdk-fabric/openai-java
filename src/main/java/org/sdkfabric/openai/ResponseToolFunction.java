@@ -15,7 +15,7 @@ public class ResponseToolFunction extends ResponseTool {
     @JsonPropertyDescription("Whether to enforce strict parameter validation. Default true.")
     private Boolean strict;
     @JsonPropertyDescription("The type of the function tool. Always function.")
-    private String type;
+    private String type = "function";
     @JsonPropertyDescription("A description of the function. Used by the model to determine whether or not to call the function.")
     private String description;
 

@@ -8,7 +8,7 @@ package org.sdkfabric.openai;
 import com.fasterxml.jackson.annotation.*;
 
 public class ResponseTextFormatText extends ResponseTextFormat {
-    private String type;
+    private String type = "text";
 
     @JsonSetter("type")
     public void setType(String type) {

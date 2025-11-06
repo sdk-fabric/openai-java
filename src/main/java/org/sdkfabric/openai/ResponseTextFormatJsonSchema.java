@@ -13,7 +13,7 @@ public class ResponseTextFormatJsonSchema extends ResponseTextFormat {
     @JsonPropertyDescription("The schema for the response format, described as a JSON Schema object.")
     private Object schema;
     @JsonPropertyDescription("The type of response format being defined. Always json_schema.")
-    private String type;
+    private String type = "json_schema";
     @JsonPropertyDescription("A description of what the response format is for, used by the model to determine how to respond in the format.")
     private String description;
     @JsonPropertyDescription("Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the schema field. Only a subset of JSON Schema is supported when strict is true.")

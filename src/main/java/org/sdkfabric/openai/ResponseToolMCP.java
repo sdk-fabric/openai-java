@@ -11,7 +11,7 @@ public class ResponseToolMCP extends ResponseTool {
     @JsonPropertyDescription("A label for this MCP server, used to identify it in tool calls.")
     private String serverLabel;
     @JsonPropertyDescription("The type of the MCP tool. Always mcp.")
-    private String type;
+    private String type = "mcp";
     @JsonPropertyDescription("List of allowed tool names or a filter object.")
     private java.util.List<String> allowedTools;
     @JsonPropertyDescription("An OAuth access token that can be used with a remote MCP server, either with a custom MCP server URL or a service connector. Your application must handle the OAuth authorization flow and provide the token here.")
