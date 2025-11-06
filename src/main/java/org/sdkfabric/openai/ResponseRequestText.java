@@ -9,17 +9,17 @@ import com.fasterxml.jackson.annotation.*;
 
 public class ResponseRequestText {
     @JsonPropertyDescription("An object specifying the format that the model must output.")
-    private String format;
+    private ResponseRequestTextFormat format;
     @JsonPropertyDescription("Constrains the verbosity of the model's response. Lower values will result in more concise responses, while higher values will result in more verbose responses. Currently supported values are low, medium, and high.")
     private String verbosity;
 
     @JsonSetter("format")
-    public void setFormat(String format) {
+    public void setFormat(ResponseRequestTextFormat format) {
         this.format = format;
     }
 
     @JsonGetter("format")
-    public String getFormat() {
+    public ResponseRequestTextFormat getFormat() {
         return this.format;
     }
 
