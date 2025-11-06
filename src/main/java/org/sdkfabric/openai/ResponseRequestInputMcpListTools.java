@@ -14,11 +14,11 @@ public class ResponseRequestInputMcpListTools extends ResponseRequestInput {
     @JsonPropertyDescription("The label of the MCP server.")
     private String serverLabel;
     @JsonPropertyDescription("The tools available on the server.")
-    private String tools;
-    @JsonPropertyDescription("The type of the item. Always mcp_list_tools.")
-    private java.util.List<ResponseMCPTool> type;
+    private java.util.List<ResponseMCPTool> tools;
     @JsonPropertyDescription("Error message if the server could not list tools.")
     private String error;
+    @JsonPropertyDescription("The type of the item. Always mcp_list_tools.")
+    private String type = "mcp_list_tools";
 
     @JsonSetter("id")
     public void setId(String id) {
@@ -41,23 +41,13 @@ public class ResponseRequestInputMcpListTools extends ResponseRequestInput {
     }
 
     @JsonSetter("tools")
-    public void setTools(String tools) {
+    public void setTools(java.util.List<ResponseMCPTool> tools) {
         this.tools = tools;
     }
 
     @JsonGetter("tools")
-    public String getTools() {
+    public java.util.List<ResponseMCPTool> getTools() {
         return this.tools;
-    }
-
-    @JsonSetter("type")
-    public void setType(java.util.List<ResponseMCPTool> type) {
-        this.type = type;
-    }
-
-    @JsonGetter("type")
-    public java.util.List<ResponseMCPTool> getType() {
-        return this.type;
     }
 
     @JsonSetter("error")
@@ -68,6 +58,16 @@ public class ResponseRequestInputMcpListTools extends ResponseRequestInput {
     @JsonGetter("error")
     public String getError() {
         return this.error;
+    }
+
+    @JsonSetter("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonGetter("type")
+    public String getType() {
+        return this.type;
     }
 }
 
