@@ -60,6 +60,53 @@ public class CompletionsTag extends TagAbstract {
                 }
 
                 var statusCode = response.getCode();
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
+
+                    throw new ErrorException(data);
+                }
+
+                throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
+            });
+        } catch (ClientException e) {
+            throw e;
+        } catch (URISyntaxException | IOException e) {
+            throw new ClientException("An unknown error occurred: " + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * Delete a stored chat completion. Only Chat Completions that have been created with the store parameter set to true can be deleted.
+     */
+    public CompletionDeleted delete(String completionId) throws ClientException {
+        try {
+            Map<String, Object> pathParams = new HashMap<>();
+            pathParams.put("completion_id", completionId);
+
+            Map<String, Object> queryParams = new HashMap<>();
+
+            List<String> queryStructNames = new ArrayList<>();
+
+            URIBuilder builder = new URIBuilder(this.parser.url("/v1/chat/completions/:completion_id", pathParams));
+            this.parser.query(builder, queryParams, queryStructNames);
+
+            HttpDelete request = new HttpDelete(builder.build());
+
+
+            return this.httpClient.execute(request, response -> {
+                if (response.getCode() >= 200 && response.getCode() <= 299) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<CompletionDeleted>(){});
+
+                    return data;
+                }
+
+                var statusCode = response.getCode();
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
+
+                    throw new ErrorException(data);
+                }
+
                 throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
             });
         } catch (ClientException e) {
@@ -98,41 +145,12 @@ public class CompletionsTag extends TagAbstract {
                 }
 
                 var statusCode = response.getCode();
-                throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
-            });
-        } catch (ClientException e) {
-            throw e;
-        } catch (URISyntaxException | IOException e) {
-            throw new ClientException("An unknown error occurred: " + e.getMessage(), e);
-        }
-    }
+                if (statusCode >= 0 && statusCode <= 999) {
+                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<Error>(){});
 
-    /**
-     * Delete a stored chat completion. Only Chat Completions that have been created with the store parameter set to true can be deleted.
-     */
-    public CompletionDeleted delete(String completionId) throws ClientException {
-        try {
-            Map<String, Object> pathParams = new HashMap<>();
-            pathParams.put("completion_id", completionId);
-
-            Map<String, Object> queryParams = new HashMap<>();
-
-            List<String> queryStructNames = new ArrayList<>();
-
-            URIBuilder builder = new URIBuilder(this.parser.url("/v1/chat/completions/:completion_id", pathParams));
-            this.parser.query(builder, queryParams, queryStructNames);
-
-            HttpDelete request = new HttpDelete(builder.build());
-
-
-            return this.httpClient.execute(request, response -> {
-                if (response.getCode() >= 200 && response.getCode() <= 299) {
-                    var data = this.parser.parse(EntityUtils.toString(response.getEntity()), new TypeReference<CompletionDeleted>(){});
-
-                    return data;
+                    throw new ErrorException(data);
                 }
 
-                var statusCode = response.getCode();
                 throw new UnknownStatusCodeException("The server returned an unknown status code: " + statusCode);
             });
         } catch (ClientException e) {

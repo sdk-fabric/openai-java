@@ -43,15 +43,24 @@ public class Client extends ClientAbstract {
         );
     }
 
+    public ResponsesTag responses()
+    {
+        return new ResponsesTag(
+            this.httpClient,
+            this.objectMapper,
+            this.parser
+        );
+    }
+
 
 
     public static Client build(String token) throws InvalidCredentialsException
     {
-        return new Client("https://api.openai.com/", new HttpBearer(token));
+        return new Client("https://api.openai.com", new HttpBearer(token));
     }
 
     public static Client buildAnonymous() throws InvalidCredentialsException
     {
-        return new Client("https://api.openai.com/", new Anonymous());
+        return new Client("https://api.openai.com", new Anonymous());
     }
 }
