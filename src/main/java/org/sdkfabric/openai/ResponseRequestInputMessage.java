@@ -9,19 +9,19 @@ import com.fasterxml.jackson.annotation.*;
 
 public class ResponseRequestInputMessage extends ResponseRequestInput {
     @JsonPropertyDescription("Text, image, or audio input to the model, used to generate a response. Can also contain previous assistant responses.")
-    private java.util.List<String> content;
+    private String content;
     @JsonPropertyDescription("The role of the message input. One of user, assistant, system, or developer.")
     private String role;
     @JsonPropertyDescription("The type of the message input. Always message.")
     private String type = "message";
 
     @JsonSetter("content")
-    public void setContent(java.util.List<String> content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
     @JsonGetter("content")
-    public java.util.List<String> getContent() {
+    public String getContent() {
         return this.content;
     }
 
