@@ -6,9 +6,9 @@
     <artifactId>openai</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
-    <name>Openai</name>
-    <description>Openai Java SDK managed by SDK Fabric</description>
-    <url>https://sdk-fabric.org/openai</url>
+    <name>OpenAI</name>
+    <description>OpenAI Java SDK managed by SDK Fabric</description>
+    <url>https://sdk-fabric.org</url>
     <licenses>
         <license>
             <name>MIT</name>
