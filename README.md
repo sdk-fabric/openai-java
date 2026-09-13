@@ -15,14 +15,14 @@ import org.sdkfabric.openai.Client;
 Client client = Client::build("[access_token]");
 
 // Creates a model response for the given chat conversation.
-CompletionResponse response = client.completions().create(new CompletionRequest());
+Completion_Response response = client.completions().create(new Completion_Request());
 
 // Delete a stored chat completion.
-CompletionDeleted response = client.completions().delete("completion_id");
+Completion_Deleted response = client.completions().delete("completion_id");
 
 // List stored Chat Completions.
-CompletionCollection response = client.completions().getall("after", 1, "model", "order");
+Completion_Collection response = client.completions().getAll("after", 1, "model", "order");
 
 // Creates a model response.
-ResponseResponse response = client.responses().create(new ResponseRequest());
+Response_Response response = client.responses().create(new Response_Request());
 ```
