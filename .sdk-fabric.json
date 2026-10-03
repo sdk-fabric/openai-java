@@ -1,6 +1,6 @@
 {
-  "name": "OpenAI",
-  "description": "OpenAI Java SDK managed by SDK Fabric",
+  "name": "Openai",
+  "description": "Openai Java SDK managed by SDK Fabric",
   "website": "https://sdk-fabric.org",
   "namespace": "org.sdkfabric.openai",
   "namespace_path": "org/sdkfabric/openai",
