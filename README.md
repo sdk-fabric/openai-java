@@ -1,30 +1,28 @@
 
-# Openai SDK
+# openai-java
 
-This SDK is managed by the [SDK Fabric](https://sdk-fabric.org/) project.
-Our goal is to build a global infrastructure to automatically generate
-an SDK for every API, please take a look at our website for more information.
+This [SDK](https://github.com/sdk-fabric/openai-java) is managed by the [SDK Fabric](https://sdk-fabric.org/) project, a global infrastructure to
+automatically generate SDKs for every API.
 
-## Contribution
-
-Please do not create a pull requests at this repository since the code is
-automatically generated. If an operation or type is missing at the client SDK
-please register at the [TypeHub](https://typehub.cloud/) platform and create
-a pull request at the [Openai](https://app.typehub.cloud/d/sdkfabric/openai)
-specification. The system will then automatically create a GIT commit and update
-the code.
+You can find more information about this SDK at [TypeHub](https://typehub.cloud/):
+https://app.typehub.cloud/d/sdkfabric/openai
 
 ## Usage
-
-The following example shows how you initialize the client:
 
 ```java
 import org.sdkfabric.openai.Client;
 
 Client client = Client::build("[access_token]");
 
-// @TODO use the client
-```
+// Creates a model response for the given chat conversation.
+Completion_Response response = client.completions().create(new Completion_Request());
 
-You can find all available operations and types at:
-https://app.typehub.cloud/d/sdkfabric/openai
+// Delete a stored chat completion.
+Completion_Deleted response = client.completions().delete("completion_id");
+
+// List stored Chat Completions.
+Completion_Collection response = client.completions().getAll("after", 1, "model", "order");
+
+// Creates a model response.
+Response_Response response = client.responses().create(new Response_Request());
+```
